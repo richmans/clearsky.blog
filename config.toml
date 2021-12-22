@@ -6,7 +6,9 @@ languagecode = "en"
 [params]
   sitename = "ClearSky"
   noauthor = "true"
-
+[taxonomies]
+    tag = "tags"
+    
 [[menu.primary]]
     name = "Home"
     url = "/"
