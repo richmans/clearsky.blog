@@ -6,7 +6,7 @@ tags: [clearsky]
 ---
 Hello, this is ClearSky! ClearSky is this vague idea that i’ve had for a while now about hosting small (hobby) projects. 
 
-This blog is a place where I hope this vague idea can grow into a “why” and “how” to host small projects at minimum cost and effort. It is mostly to "scratch my own itch" but maybe over time it will grow into something that is useful to others.
+This blog is a place where I hope this vague idea can grow into a “why” and “how” to host small projects at minimum cost and effort.
 
 ### So what is ClearSky?
 The name ClearSky already gives a hint of this idea (as all good names should!) A clear sky is a sky without clouds. My vague idea is that I want the “cloud devops experience” while minimizing the usage of cloud services. I want to self-host as much as possible.
