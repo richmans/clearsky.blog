@@ -4,7 +4,7 @@ date: 2021-12-17T21:25:16+01:00
 draft: false
 tags: [clearsky]
 ---
-Hello everyone, this is ClearSky! ClearSky is this vague idea that i’ve had for a while now about hosting small (hobby) projects. 
+Hello everyone, this is ClearSky! ClearSky is this vague idea that i’ve had for a while now about hosting small projects. 
 
 This blog is a place where I hope this vague idea can grow into a “why” and “how” to host small projects at minimum cost and effort.
 
