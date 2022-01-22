@@ -7,7 +7,7 @@ A friend of mine is getting married soon, and we wanted to do something creative
 
 First things first, let’s talk hardware. I decided to go with an arduino uno because it is cheap (That is, [these chinese clones](https://a.aliexpress.com/_m07TFW4) are) and simple. For the screen i went with this:
 
-![Cat pictures are the primary advised use case for this product]("cat.jpg")
+![Cat pictures are the primary advised use case for this product](cat.jpg)
 
 The screen is a bit pricey, but nice and small, it has a backlight, 128x128 pixels and 65k colors. It comes with a micro-sd reader and connects through SPI to the arduino. There is an arduino library available for this screen, and adafruit has a [great tutorial on how to use it](https://learn.adafruit.com/1-8-tft-display/overview)
 
@@ -15,7 +15,7 @@ So how do we show hearts on this bad boy? Well my first idea was to use bitmaps.
 So what we are left with is drawing hearts the old-fashioned way: by using the drawing functions provided by the library. To create the animation, i wanted to have a function that could draw a heart on any location, size and color.
 So which primitive shapes make up a heart? Well for the top you need two overlapping circles. For the bottom, it looks like a triangle. Something like this
 
-![Hearts version 1]("hearts1.jpg")
+![Hearts version 1](hearts1.jpg)
 
 So this is what my function signature looks like:
 
@@ -45,15 +45,15 @@ tft.fillTriangle(x — w/2, y, x+, w/2, x, y + tail, color);
 
 That worked! Great! Done? No! While tweaking with the parameters I came to the conclusion that my interpretation of a heart shape was just a little ‘off’. The straight line of the triangle doesn’t line up with the curved line of the circle. How do we fix this? by drawing the triangle lower. The ideal height seems to be the height of the lower intersection of the two circles.
 
-![Hearts 2.0]("hearts2.jpg")
+![Hearts 2.0](hearts2.jpg)
 
 So how do we calculate the position of this intersection? Well, this is where our hero Pythagoras comes in. Let’s take a closer look at that left circle.
 
-![this is getting complicated]("circle.jpg")
+![this is getting complicated](circle.jpg)
 
 So in this picture, h is the center of the heart shape, point c is the center of the left circle, and i is the point we want to find: where the two circles overlap. We know that i is directly below h, and point c is directly next to h, so h is a 90 degree angle. We want to know the length of side a. We know that side c is the radius of the circle, we calculated that already. We know that b is the radius minus some overlap, we also calculated that in variable circleDistance). So let’s do this thing highschool style:
 
-![Remember these times?]("highschool.jpg")
+![Remember these times?](highschool.jpg)
 
 So here’s the full function in code:
 
@@ -88,6 +88,6 @@ When i use this in an animation, the framerate is still not great, you can see t
 
 After fiddling with the parameters a little, i settled on setting the overlap to 0.1 times the total width, and the tail to 0.6 times the total width.
 
-![Finally, some proper hearts!]("result.gif")
+![Finally, some proper hearts!](result.gif)
 
 Spread the love!
