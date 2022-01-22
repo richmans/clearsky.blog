@@ -1,7 +1,7 @@
 ---
 title: "The math of love"
 date: 2017-08-29
-draft: true
+draft: false
 ---
 A friend of mine is getting married soon, and we wanted to do something creative as a present. We wanted to create something involving a small color screen showing motiviational marriage-related quotes. I thought it would be fun to include some animated graphics. What graphics do you include in a wedding-gift? Hearts ofcourse! I wanted to create an animation of a black screen with a red heart that grows until it fills the whole screen.
 
