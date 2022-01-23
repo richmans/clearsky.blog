@@ -11,9 +11,7 @@ This week, the RAID-set for our VMWare machine crashed. Our sysadmin replaced th
 
 This doesn’t really give any information about what is wrong with the file. Luckily, VMWare keeps a pretty detailed logfile. Looking in the logfile, i saw a whole bunch of lines like this:
 
-```
-`2017–04–05T08:58:55.230+02:00| Worker#0| I125: DISKLIB-LEGCHK: The GTE [62] in GT [7522] is invalid (980705138)
-```
+> 2017–04–05T08:58:55.230+02:00| Worker#0| I125: DISKLIB-LEGCHK: The GTE [62] in GT [7522] is invalid (980705138)
 
 Great! So all we need to do is find GTE 62 in GT 7522 and make it valid!
 
@@ -63,9 +61,7 @@ So, according to these calculations, at position 11292672 in the VMDK file, i sh
 
 Awesome! Now that I'm confident I understand the file format, let's take a step back and again look at the original error message to see if we can interpret it better.
 
-```
-2017–04–05T08:58:55.230+02:00| Worker#0| I125: DISKLIB-LEGCHK: The GTE [62] in GT [7522] is invalid (980705138)
-```
+> 2017–04–05T08:58:55.230+02:00| Worker#0| I125: DISKLIB-LEGCHK: The GTE [62] in GT [7522] is invalid (980705138)
 
 So, Grain Directory entry 7522 points to a Grain Table that has a pointer in entry 62 which points to sector 980705138. This is invalid. It's easy to see why this is invalid. That sector number would translate to a byte offset within the VMDK file of about 450 GB, while the file is only 1 GB in size. So VMWare is complaining that this sector does not exist!
 
@@ -110,9 +106,7 @@ When i got back, VMWare was still asking the same question, and the VMDK had gro
 
 I looked in the vmware.log and found a new error waiting for me, just as mysterious as the last one:
 
-```
-DISKLIB-LEGCHK: Repairable hole of -2070752 sectors after the last block.
-```
+> DISKLIB-LEGCHK: Repairable hole of -2070752 sectors after the last block.
 
 Yes, you're reading this correctly: **VMWare found a hole in my disk with a negative size**. What is going on here?
 
