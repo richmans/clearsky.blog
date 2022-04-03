@@ -31,7 +31,7 @@
 {{/* only use images smaller than or equal to the src (original) 
 image size, as Hugo will upscale small images */}}
 
-
+<figure>
 <a href="{{ $src.RelPermalink }}">
     <picture>
     
@@ -54,7 +54,8 @@ image size, as Hugo will upscale small images */}}
 
 </picture>
 </a>
-  
+<figcaption>{{ .Title | markdownify }}</figcaption>  
+</figure>
   {{/* Since I do image-response class, the only thing that really 
   matters is the height and width matches the image aspect ratio */}}
 
