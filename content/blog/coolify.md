@@ -13,4 +13,4 @@ As always, there are still a lot of features that i would like to have. Maybe th
 
 Another optimalization that i would like to see is shared database servers. I don't need 10 postgres instances to host 10 databases. 1 instance is enough. Databases are more than capable of handling authentication and authorization of different users.
 
-While there is definitely room for improvement, coolify comes closer to what I envisioned for ClearSky than anything I've seen so far. So I decided to stop working on the ClearSky platform for now, and see what cool things I can build on coolify. This blog is now hosted on coolify as well.
+While there is definitely room for improvement, coolify comes closer to what I envisioned for ClearSky than anything I've seen so far. So I decided to stop working on the ClearSky platform for now, and see what cool things I can build on coolify. This blog is now hosted on coolify as well
