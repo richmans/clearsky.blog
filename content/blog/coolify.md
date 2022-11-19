@@ -1,7 +1,7 @@
 ---
 title: "ClearSky == coolify?"
 date: 2022-04-03
-draft: false
+draft: true
 ---
 ClearSky started with the idea of getting the "cloud devops experience" without the cloud. Since registering this domain about 4 months ago and writing the first post about ClearSky, I did a lot of development and thinking what that would mean. 
 
