@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://clearsky.dev/favicon.ico><link rel=stylesheet href=/css/style.min.css><title>ActionMailer renders the email body twice</title></head><body><header id=banner><h2><a href=https://clearsky.dev/>ClearSky</a></h2><nav><ul></ul></nav></header><main id=content><article><header id=post-header><h1>ActionMailer renders the email body twice</h1><div><time>February 22, 2023</time></div></header><p>Recently i was happily coding on my rails project. I wanted to add a feature that would send an email to all admin users when a certain event occurred. So i searched &ldquo;rails email&rdquo; and discovered <a href=https://guides.rubyonrails.org/action_mailer_basics.html>ActionMailer</a>.</p><p>It works simple enough. First you define a &ldquo;mailer&rdquo; which is a lot like a controller. I defined a &ldquo;PublicationMailer&rdquo;. It fetches the necessary data and then renders the email. Step 2 is defining views for the mailer, both html and txt formats. Lastly, you call <code>PublicationMailer.publication().deliver</code> and bimbamboom your email is ready. Good! On to the next feature.</p><p>Fast forward a couple of weeks. The app is almost ready and i&rsquo;m deploying it on a VPS to see if everything works as expected. File uploads? Check! Authentication? Check! Email notifications? Che&mldr; wait a minute! The email that arrived in my inbox had the right contents, but it had them twice! Sanity check: no this did not occur in my test environment. What was going on?</p><p>After some head-scratching, i took another hard look at my mailer object:</p><pre tabindex=0><code>class PublicationMailer &lt; ApplicationMailer
+  helper :application
+  default from: &#34;notifications@mark423.com&#34;
+  layout &#34;mailer&#34;
+  def publication(recording)
+    @recording = recording
+    User.where(is_admin: true).each do |user|
+      mail to: user.email, subject: &#34;Podcast published&#34;
+    end
+  end
+end
+</code></pre><p>I immediately understood my mistake. What I would expect this code to do is to send one email to each user that is an admin.</p><p>In my test environment, i only had one admin user. In my production environment i had created 2, which triggered the problem.</p><blockquote><p>It turns out the <strong>mail</strong> function does not really send a mail. It <strong>renders</strong> the mail.</p></blockquote><h2 id=solving-it>Solving it</h2><p>The fix was simple: call mail once with a list of recipients.</p><pre tabindex=0><code>class PublicationMailer &lt; ApplicationMailer
+  helper :application
+  default from: &#34;notifications@mark423.com&#34;
+  def recording_published(recording)
+    @recording = recording
+    emails = User.where(is_admin: true).collect(&amp;:email)
+    mail to: emails, subject: &#34;Podcast published&#34;
+  end
+end
+</code></pre><h2 id=hindsight>Hindsight</h2><p>I think the function &lsquo;mail&rsquo; could have had a better name (maybe &lsquo;render&rsquo; like in controllers?). On the other hand, i could probably have read the <a href=https://api.rubyonrails.org/classes/ActionMailer/Base.html#method-i-mail>documentation</a> better.</p></article></main><footer id=footer></footer></body></html>
