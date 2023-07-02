@@ -1,6 +1,6 @@
 ---
 title: "iPhone DevOps - python edition"
-date: 2023-07-0212T19:25:16+01:00
+date: 2023-07-02T19:25:16+01:00
 draft: false
 tags: [mobile]
 ---
