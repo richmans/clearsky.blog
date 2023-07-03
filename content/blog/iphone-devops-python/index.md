@@ -49,5 +49,9 @@ As with most things that run on an iPhone, the UI is pretty great. But it's not 
 * The terminal is **not a real terminal**. You can use `input()` and `print()` but don't expect anything fancy like arrow keys or colors to work
 * It **works only for python**.I would love to work more with other languages such as rust, but I'd need a different solution for that.
 
+This may sound like a long list of pretty serious issues. And it is. But at least for this project, pythonista gets the job done... slowly.
+
 ## Conclusion: it works...for patient people
-Coding on an iPhone is no joke. It takes longer and is more error-prone than a desktop experience. But if you have no other choice, and you have a large amount of patience, you can actually program spaceships from an iPhone. And to me, that's pretty neat!
+Coding on an iPhone is no joke. It takes longer and is more error-prone than a desktop experience. I will keep on searching for alternatives. Especially working on rust projects would be nice.
+
+But if you have no other choice, and you have a large amount of patience, you can actually program spaceships from an iPhone. And to me, that's pretty neat!
